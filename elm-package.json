@@ -1,7 +1,7 @@
 {
     "version": "1.0.0",
-    "summary": "helpful summary of your project, less than 80 characters",
-    "repository": "https://github.com/surprisetalk/pointless.git",
+    "summary": "Point-free combinator operators",
+    "repository": "https://github.com/surprisetalk/elm-pointless.git",
     "license": "BSD3",
     "source-directories": [
         "src"
