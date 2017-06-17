@@ -15,6 +15,8 @@ module Pointless exposing (    (~>)
 
 -- DOCS ------------------------------------------------------------------------
 
+-- TODO: the examples are way too wide
+
 {-| A pointless library to make more less-confusing point-free functions with pointy arrows.
 
 
