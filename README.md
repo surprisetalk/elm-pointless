@@ -18,6 +18,7 @@ Suppose we have a function.
 
 a_to_b : a -> b
 
+
 ```
 
 Now let's transform the argument `a` into `x`.
@@ -36,6 +37,7 @@ x_to_b : x -> b
 x_to_b = x_to_a >> a_to_b
          -- compose
 
+
 ```
 
 ### Multivariate Composition
@@ -46,6 +48,7 @@ Easy! But what if our function has more variables?
 
 a_to_b_to_c : a -> b -> c
 
+
 ```
 
 Also imagine we have some fun transformations that we want to apply to the function's *arguments*.
@@ -54,6 +57,7 @@ Also imagine we have some fun transformations that we want to apply to the funct
 
 x_to_a : x -> a
 y_to_b : y -> b
+
 
 ```
 
@@ -73,6 +77,7 @@ a_to_y_to_c : a -> y -> c
 a_to_y_to_c a = y_to_b >> a_to_b_to_c a 
                 -- compose
 
+
 ```
 
 Let's try this with the "flarg" operator.
@@ -84,6 +89,7 @@ a_to_y_to_c = a_to_b_to_c
               |~> identity ~> y_to_b ~> identity
               -- transform the second argument
 
+
 ```
 
 
@@ -94,6 +100,7 @@ What if we want to change the *result* at the end?
 ``` elm
 
 c_to_z : c -> z
+
 
 ```
 
@@ -118,6 +125,7 @@ a_to_b_to_z = a_to_b_to_c >>> c_to_z
               -- super compose!
               -- (just kidding)
 
+
 ```
 
 How does it look in a flarg-chain?
@@ -128,6 +136,7 @@ a_to_b_to_z : a -> b -> z
 a_to_b_to_z = a_to_b_to_c 
               |~> identity ~> identity ~> c_to_z
               -- transform the result
+
 
 ```
 
@@ -148,6 +157,7 @@ x_to_b_to_z = a_to_b_to_c
               |~> x_to_a ~> identity ~> c_to_z
               -- transform the first argument and the result
 
+
 ```
 
 You can even chain the flarg-chains together!
@@ -159,6 +169,7 @@ x_to_y_to_z = a_to_b_to_c
               |~> identity ~> y_to_q   ~> identity
               |~> x_to_a   ~> identity ~> identity
               |~> identity ~> q_to_b   ~> c_to_z
+
 
 ```
 
@@ -183,6 +194,7 @@ x_to_b_to_z : x -> b -> z
 x_to_b_to_z = a_to_b_to_c 
               |~> x_to_a -~> c_to_z
 
+
 ```
 
 I interpret `-~>` as: 
@@ -203,6 +215,7 @@ a_to_y_to_z = a_to_b_to_c
 a_to_y_to_z : a -> y -> z
 a_to_y_to_z = a_to_b_to_c 
               |-~> y_to_b ~> c_to_z
+
 
 ```
 
@@ -234,6 +247,7 @@ p_to_b_to_c_to_s : p -> b -> c -> s
 p_to_b_to_c_to_s = a_to_b_to_c_d 
                    |~> p_to_a =~> d_to_s
 
+
 ```
 
 We can break `=~>` up like so: 
@@ -258,6 +272,7 @@ a_to_b_to_z = a_to_b_to_c
 a_to_b_to_z : a -> b -> z
 a_to_b_to_z = a_to_b_to_c 
               |=~> c_to_z
+
 
 ```
 
@@ -295,6 +310,7 @@ a_to_y_to_c_to_d = a_to_b_to_c_to_d
                    -- skip the first argument
                    -- then process `y_to_b`
                    -- then skip another argument (end the chain)
+
 
 ```
 
