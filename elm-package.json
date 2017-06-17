@@ -1,5 +1,5 @@
 {
-    "version": "1.0.1",
+    "version": "1.0.2",
     "summary": "Point-free combinator operators",
     "repository": "https://github.com/surprisetalk/elm-pointless.git",
     "license": "BSD3",
